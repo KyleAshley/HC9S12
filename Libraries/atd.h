@@ -17,6 +17,6 @@ void atd0_setJustification(char);   // 'L' for left, 'R for right
 void atd0_setScan(int);             // sets ATD Module 0 SCAN bit on/off (1/0)
 void atd0_setMulti(int);            // sets ATD Module 0 MULT bit on/off (1/0)
 void atd0_setStart(int);            // sets starting channel of ATD conversion sequence (call Last)
-float atd0_readChX(int);            // reads data registers of corresponding ATD Data Reg 
+unsigned int atd0_readChX(int);            // reads data registers of corresponding ATD Data Reg
 
 #endif // ATD_H_

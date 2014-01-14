@@ -33,7 +33,7 @@ void lcd_setup(void)
    lcd_COMWRT(0x0E);       //Display set, disp on, cursor on, blink off
    lcd_COMWRT(0x01);       //Clear display
    lcd_COMWRT(0x80);       //set start posistion, home position
-   LCDDelayDATA(TCHAR); // wait for LCD setup
+   delay_LCD_DATA(TCHAR); // wait for LCD setup
 }
 
 /*******************************************************/
@@ -49,7 +49,7 @@ void lcd_outputDouble(double val)
       while (string[i] != '\0')
   	  {
         lcd_DATWRTFIRST(string[i]);
-        LCDDelayDATA(TCHAR);
+        delay_LCD_DATA(TCHAR);
         i++;
       }
 }
@@ -67,7 +67,7 @@ void lcd_outputFloat(float val)
       while (string[i] != '\0')
   	  {
         lcd_DATWRTFIRST(string[i]);
-        LCDDelayDATA(TCHAR);
+        delay_LCD_DATA(TCHAR);
         i++;
       }
 }
@@ -79,7 +79,7 @@ void lcd_outputFloat(float val)
 void lcd_outputChar(unsigned char data)         // Outputs a character to current cursor position
 {
     lcd_DATWRTFIRST(data);
-    LCDDelayDATA(TCHAR);
+    delay_LCD_DATA(TCHAR);
 }
 
 /*******************************************************/
@@ -93,7 +93,7 @@ void lcd_outputString(char* text)              // Outputs a character string sta
     while(text[i] != '\0')
     {
         lcd_DATWRTFIRST(text[i]);
-        LCDDelayDATA(TCHAR);
+        delay_LCD_DATA(TCHAR);
         i++;
     }
 }
@@ -105,7 +105,7 @@ void lcd_outputString(char* text)              // Outputs a character string sta
 void lcd_newLine()                         // Sets cursor to the next line
 {
     lcd_COMWRTFIRST(0xC0);
-    LCDDelayDATA(TCHAR);
+    delay_LCD_DATA(TCHAR);
 }
 
 /*******************************************************/
@@ -115,7 +115,7 @@ void lcd_newLine()                         // Sets cursor to the next line
 void lcd_clear()
 {
   lcd_COMWRTFIRST(0x01);
-  LCDDelayDATA(1000);
+  delay_LCD_DATA(1000);
 }
 
 
@@ -136,19 +136,19 @@ void lcd_COMWRTFIRST(unsigned char data)    // No LCD DAT delay becuase its the 
        LCD_DATA = LCD_DATA & ~0x3C;
        LCD_DATA = LCD_DATA | x;
        LCD_CTRL = LCD_CTRL & ~RS;
-       LCDDelayTAS(TAS);
+       delay_LCD_TAS(TAS);
        LCD_CTRL = LCD_CTRL | EN;
-       LCDDelayPWEH(PWEH);
+       delay_LCD_PWEH(PWEH);
        LCD_CTRL = LCD_CTRL & ~EN;
-       LCDDelayTH(TH);
+       delay_LCD_TH(TH);
 
        x = (data & 0x0F)<< 2;
        LCD_DATA =LCD_DATA & ~0x3C;
        LCD_DATA = LCD_DATA | x;
        LCD_CTRL = LCD_CTRL | EN;
-       LCDDelayPWEH(PWEH);
+       delay_LCD_PWEH(PWEH);
        LCD_CTRL = LCD_CTRL & ~EN;
-       LCDDelayTH(TH);
+       delay_LCD_TH(TH);
 }
 
 /*******************************************************/
@@ -163,19 +163,19 @@ void lcd_COMWRT(unsigned char data)
        x = (data & 0xF0) >> 2;
        LCD_DATA =LCD_DATA & ~0x3C;
        LCD_DATA = LCD_DATA | x;
-       LCDDelayDATA(DAT);              // wait for LCD to write (40us)
+       delay_LCD_DATA(DAT);              // wait for LCD to write (40us)
        LCD_CTRL = LCD_CTRL | EN;
-       LCDDelayPWEH(PWEH);
+       delay_LCD_PWEH(PWEH);
        LCD_CTRL = LCD_CTRL & ~EN;
-       LCDDelayTH(TH);
+       delay_LCD_TH(TH);
 
        x = (data & 0x0F)<< 2;
        LCD_DATA =LCD_DATA & ~0x3C;
        LCD_DATA = LCD_DATA | x;
        LCD_CTRL = LCD_CTRL | EN;
-       LCDDelayPWEH(PWEH);
+       delay_LCD_PWEH(PWEH);
        LCD_CTRL = LCD_CTRL & ~EN;
-       LCDDelayTH(TH);
+       delay_LCD_TH(TH);
 }
 
 /*******************************************************/
@@ -191,17 +191,17 @@ void lcd_DATWRTFIRST(unsigned char data)
        LCD_DATA =LCD_DATA & ~0x3C;
        LCD_DATA = LCD_DATA | x;
        LCD_CTRL = LCD_CTRL | RS;
-       LCDDelayTAS(TAS);
+       delay_LCD_TAS(TAS);
        LCD_CTRL = LCD_CTRL | EN;
-       LCDDelayPWEH(PWEH);
+       delay_LCD_PWEH(PWEH);
        LCD_CTRL = LCD_CTRL & ~EN;
-       LCDDelayTH(TH);
+       delay_LCD_TH(TH);
 
        x = (data & 0x0F)<< 2;
        LCD_DATA =LCD_DATA & ~0x3C;
        LCD_DATA = LCD_DATA | x;
        LCD_CTRL = LCD_CTRL | EN;
-       LCDDelayPWEH(PWEH);
+       delay_LCD_PWEH(PWEH);
        LCD_CTRL = LCD_CTRL & ~EN;
 }
 
@@ -217,17 +217,17 @@ void lcd_DATWRT(unsigned char data)      // TH delay is accounted for in LCD DAT
        x = (data & 0xF0) >> 2;
        LCD_DATA =LCD_DATA & ~0x3C;
        LCD_DATA = LCD_DATA | x;
-       LCDDelayDATA(DAT);            // wait for LCD to write (40us)
+       delay_LCD_DATA(DAT);            // wait for LCD to write (40us)
        LCD_CTRL = LCD_CTRL | EN;
-       LCDDelayPWEH(PWEH);
+       delay_LCD_PWEH(PWEH);
        LCD_CTRL = LCD_CTRL & ~EN;
-       LCDDelayTH(TH);
+       delay_LCD_TH(TH);
 
        x = (data & 0x0F)<< 2;
        LCD_DATA =LCD_DATA & ~0x3C;
        LCD_DATA = LCD_DATA | x;
        LCD_CTRL = LCD_CTRL | EN;
-       LCDDelayPWEH(PWEH);
+       delay_LCD_PWEH(PWEH);
        LCD_CTRL = LCD_CTRL & ~EN;
 }
 
@@ -243,16 +243,16 @@ void lcd_DATWRTLAST(unsigned char data)   // NO TH delay because there are no su
        x = (data & 0xF0) >> 2;
        LCD_DATA =LCD_DATA & ~0x3C;
        LCD_DATA = LCD_DATA | x;
-       LCDDelayDATA(DAT);             // wait for LCD to write (40us)
+       delay_LCD_DATA(DAT);             // wait for LCD to write (40us)
        LCD_CTRL = LCD_CTRL | EN;
-       LCDDelayPWEH(PWEH);
+       delay_LCD_PWEH(PWEH);
        LCD_CTRL = LCD_CTRL & ~EN;
-       LCDDelayTH(TH);
+       delay_LCD_TH(TH);
 
        x = (data & 0x0F)<< 2;
        LCD_DATA =LCD_DATA & ~0x3C;
        LCD_DATA = LCD_DATA | x;
        LCD_CTRL = LCD_CTRL | EN;
-       LCDDelayPWEH(PWEH);
+       delay_LCD_PWEH(PWEH);
        LCD_CTRL = LCD_CTRL & ~EN;
 }

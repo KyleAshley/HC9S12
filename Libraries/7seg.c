@@ -98,13 +98,13 @@ void sev_write(char symbol)
             else if(symbol == 'U')
                 PTH = 0x41;
             else if(symbol == 'y' || symbol == 'Y')
-                PTH = 0x11; 
-            
-            // Default NOT A LETTER
+                PTH = 0x11;
+
+            // Default NOT A LETTER, write blank
             else
             PTH = 0x3F;
         }
-        LCDDelaySCROLL(1);
+        delay_LCD_SCROLL(1);
 }
 
 /******************************************************************************/
@@ -112,60 +112,60 @@ void sev_write(char symbol)
 // POST: Tests Segments by displaying all characters
 // (Common Anode)
 /******************************************************************************/
-void sev_test() 
+void sev_test()
 {
    sev_setup();
    sev_write('0');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('1');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('2');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('3');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('4');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('5');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('6');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('7');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('8');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('9');
-   LCDDelaySCROLL(5);
-   
+   delay_LCD_SCROLL(5);
+
    sev_write('a');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('b');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('c');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('d');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('e');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('f');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('h');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('L');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('n');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('o');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('p');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('q');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('r');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('u');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
    sev_write('y');
-   LCDDelaySCROLL(5);
+   delay_LCD_SCROLL(5);
 }
-   
+
 

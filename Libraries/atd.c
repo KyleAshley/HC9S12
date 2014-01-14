@@ -8,7 +8,7 @@
 
 void atd0_powerOn()                          // Powers on ATD module 0
 {
-    ATD0CTL2 |= 0x80; 
+    ATD0CTL2 |= 0x80;
     LCDDelayDATA(60);
 }
 
@@ -77,7 +77,7 @@ void atd0_setStart(int val)                  // sets starting channel of ATD con
     ATD0CTL5 |= regVal;
 }
 
-float atd0_readChX(int ch)              // reads data registers of corresponding ATD channel
+unsigned int atd0_readChX(int ch)              // reads data registers of corresponding ATD channel
 {
     unsigned int digH, digL;
     double digi;
@@ -88,7 +88,6 @@ float atd0_readChX(int ch)              // reads data registers of corresponding
         digH = ATD0DR0H;
         digL = ATD0DR0L;
 
-        digH &= 0x03;
         digi = (digH << 8) + digL;
     }
 
@@ -98,7 +97,6 @@ float atd0_readChX(int ch)              // reads data registers of corresponding
         digH = ATD0DR1H;
         digL = ATD0DR1L;
 
-        digH &= 0x03;
         digi = (digH << 8) | digL;
     }
 
@@ -108,7 +106,6 @@ float atd0_readChX(int ch)              // reads data registers of corresponding
         digH = ATD0DR2H;
         digL = ATD0DR2L;
 
-        digH &= 0x03;
         digi = (digH << 8) | digL;
     }
 
@@ -118,17 +115,15 @@ float atd0_readChX(int ch)              // reads data registers of corresponding
         digH = ATD0DR3H;
         digL = ATD0DR3L;
 
-        digH &= 0x03;
         digi = (digH << 8) | digL;
     }
-    
+
     else if(ch == 4)
     {
         while(!(ATD0STAT0 & 0x80));
         digH = ATD0DR4H;
         digL = ATD0DR4L;
 
-        digH &= 0x03;
         digi = (digH << 8) | digL;
     }
 
@@ -138,7 +133,6 @@ float atd0_readChX(int ch)              // reads data registers of corresponding
         digH = ATD0DR5H;
         digL = ATD0DR5L;
 
-        digH &= 0x03;
         digi = (digH << 8) | digL;
     }
 
@@ -148,17 +142,78 @@ float atd0_readChX(int ch)              // reads data registers of corresponding
         digH = ATD0DR6H;
         digL = ATD0DR6L;
 
-        digH &= 0x03;
         digi = (digH << 8) | digL;
     }
 
-    else if(ch == 7)
+    else if(ch == 8)
     {
         while(!(ATD0STAT0 & 0x80));
-        digH = ATD0DR7H;
-        digL = ATD0DR7L;
+        digH = ATD0DR8H;
+        digL = ATD0DR8L;
 
-        digH &= 0x03;
+        digi = (digH << 8) | digL;
+    }
+
+    else if(ch == 9)
+    {
+        while(!(ATD0STAT0 & 0x80));
+        digH = ATD0DR9H;
+        digL = ATD0DR9L;
+
+        digi = (digH << 8) | digL;
+    }
+
+    else if(ch == 10)
+    {
+        while(!(ATD0STAT0 & 0x80));
+        digH = ATD0DR10H;
+        digL = ATD0DR10L;
+
+        digi = (digH << 8) | digL;
+    }
+
+    else if(ch == 11)
+    {
+        while(!(ATD0STAT0 & 0x80));
+        digH = ATD0DR10H;
+        digL = ATD0DR10L;
+
+        digi = (digH << 8) | digL;
+    }
+
+    else if(ch == 12)
+    {
+        while(!(ATD0STAT0 & 0x80));
+        digH = ATD0DR12H;
+        digL = ATD0DR12L;
+
+        digi = (digH << 8) | digL;
+    }
+
+    else if(ch == 13)
+    {
+        while(!(ATD0STAT0 & 0x80));
+        digH = ATD0DR13H;
+        digL = ATD0DR13L;
+
+        digi = (digH << 8) | digL;
+    }
+
+    else if(ch == 14)
+    {
+        while(!(ATD0STAT0 & 0x80));
+        digH = ATD0DR14H;
+        digL = ATD0DR14L;
+
+        digi = (digH << 8) | digL;
+    }
+
+    else if(ch == 15)
+    {
+        while(!(ATD0STAT0 & 0x80));
+        digH = ATD0DR15H;
+        digL = ATD0DR15L;
+
         digi = (digH << 8) | digL;
     }
     return digi;
