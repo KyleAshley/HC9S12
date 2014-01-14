@@ -9,7 +9,7 @@
 void atd0_powerOn()                          // Powers on ATD module 0
 {
     ATD0CTL2 |= 0x80;
-    LCDDelayDATA(60);
+    delay_LCD_DATA(60);
 }
 
 void atd0_powerOff()                          // Powers off ATD module 0
@@ -80,7 +80,7 @@ void atd0_setStart(int val)                  // sets starting channel of ATD con
 unsigned int atd0_readChX(int ch)              // reads data registers of corresponding ATD channel
 {
     unsigned int digH, digL;
-    double digi;
+    unsigned int digi;
 
     if(ch == 0)
     {
@@ -145,74 +145,11 @@ unsigned int atd0_readChX(int ch)              // reads data registers of corres
         digi = (digH << 8) | digL;
     }
 
-    else if(ch == 8)
+    else if(ch == 7)
     {
         while(!(ATD0STAT0 & 0x80));
-        digH = ATD0DR8H;
-        digL = ATD0DR8L;
-
-        digi = (digH << 8) | digL;
-    }
-
-    else if(ch == 9)
-    {
-        while(!(ATD0STAT0 & 0x80));
-        digH = ATD0DR9H;
-        digL = ATD0DR9L;
-
-        digi = (digH << 8) | digL;
-    }
-
-    else if(ch == 10)
-    {
-        while(!(ATD0STAT0 & 0x80));
-        digH = ATD0DR10H;
-        digL = ATD0DR10L;
-
-        digi = (digH << 8) | digL;
-    }
-
-    else if(ch == 11)
-    {
-        while(!(ATD0STAT0 & 0x80));
-        digH = ATD0DR10H;
-        digL = ATD0DR10L;
-
-        digi = (digH << 8) | digL;
-    }
-
-    else if(ch == 12)
-    {
-        while(!(ATD0STAT0 & 0x80));
-        digH = ATD0DR12H;
-        digL = ATD0DR12L;
-
-        digi = (digH << 8) | digL;
-    }
-
-    else if(ch == 13)
-    {
-        while(!(ATD0STAT0 & 0x80));
-        digH = ATD0DR13H;
-        digL = ATD0DR13L;
-
-        digi = (digH << 8) | digL;
-    }
-
-    else if(ch == 14)
-    {
-        while(!(ATD0STAT0 & 0x80));
-        digH = ATD0DR14H;
-        digL = ATD0DR14L;
-
-        digi = (digH << 8) | digL;
-    }
-
-    else if(ch == 15)
-    {
-        while(!(ATD0STAT0 & 0x80));
-        digH = ATD0DR15H;
-        digL = ATD0DR15L;
+        digH = ATD0DR7H;
+        digL = ATD0DR7L;
 
         digi = (digH << 8) | digL;
     }

@@ -102,7 +102,7 @@ void sev_write(char symbol)
 
             // Default NOT A LETTER, write blank
             else
-            PTH = 0x3F;
+            PTH = 0x7F;
         }
         delay_LCD_SCROLL(1);
 }
