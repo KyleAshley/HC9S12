@@ -6,6 +6,7 @@
 #include "7seg.h"
 #include <hidef.h>          /* common defines and macros */
 #include "derivative.h"      /* derivative-specific definitions */
+#include "delays.h"
 /******************************************************************************/
 // PRE: NONE
 // POST: seven-segment display is configured to be written to
@@ -104,7 +105,6 @@ void sev_write(char symbol)
             else
             PTH = 0x7F;
         }
-        delay_LCD_SCROLL(1);
 }
 
 /******************************************************************************/
