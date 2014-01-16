@@ -5,6 +5,7 @@
 /*********************************************************************/
 #include "derivative.h"
 #include "atd.h"
+#include "delays.h"
 
 void atd0_powerOn()                          // Powers on ATD module 0
 {

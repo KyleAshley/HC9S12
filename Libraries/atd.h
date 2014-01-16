@@ -7,8 +7,8 @@
 #ifndef ATD_H_
 #define ATD_H_
 
-void atd0_powerOn();                // Powers on ATD module 0
-void atd0_powerOff();                // Powers off ATD module 0
+void atd0_powerOn(void);                // Powers on ATD module 0
+void atd0_powerOff(void);                // Powers off ATD module 0
 void atd0_setFFC(int);              // set fast flag clearing on/off
 void atd0_setLength(int);           // sets conversion sequence length of ATD module 0
 void atd0_setFifo(int);             // turns FIFO mode on or off (1/0)
