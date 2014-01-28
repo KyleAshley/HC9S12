@@ -11,11 +11,8 @@
 #define LCD_CTRL PORTK
 #define RS 0x01
 #define EN 0x02
-#define TAS 1                  // 1's here to reduce # MCFLG checks
-#define PWEH 1
-#define TH 1
-#define TCHAR 8000
-#define DAT 26
+
+
 
 /******************************************************************************/
 // General Use Delay Functions
@@ -109,5 +106,21 @@ void delay_LCD_SCROLL(unsigned int num)  // 43 ms per 'num' + Overhead
         MCCTL = 0x4F;                       // PRE = 16
         while (!(MCFLG & 0x80));
         MCFLG = 0x80;
+    }
+}
+
+/******************************************************************************/
+// Stepper Motor Delay Functions 
+/******************************************************************************/
+
+void delay_motor_STEP(unsigned int num)    // ACTUAL = (40us per 'num' + Overhead) = 40 us
+{                                     // IDEAL  = 40 us
+    unsigned int i = 0;
+    MCCNT = 0x20;                       // LOAD = 32
+    MCCTL = 0x4C;                       // PRE = 1
+    for (i=0; i<num; i++)
+    {
+        while (!(MCFLG & 0x80));
+            MCFLG = 0x80;
     }
 }

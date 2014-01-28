@@ -16,7 +16,7 @@
 #define TAS 1                  // 1's here to reduce # MCFLG checks
 #define PWEH 1
 #define TH 1
-#define TCHAR 2000
+//#define TCHAR 2000
 #define DAT 26
 
 /*******************************************************/
@@ -45,7 +45,7 @@ void lcd_outputDouble(double val)
   unsigned int i = 0;
   unsigned int j = 0;
   unsigned char string[16];
-  sprintf(string,"%8.7f",val);
+  sprintf(string,"%8.5f",val);
       while (string[i] != '\0')
   	  {
         lcd_DATWRTFIRST(string[i]);
@@ -63,7 +63,7 @@ void lcd_outputFloat(float val)
   unsigned int i = 0;
   unsigned int j = 0;
   unsigned char string[8];
-  sprintf(string,"%4.3f",val);
+  sprintf(string,"%8.3f",val);
       while (string[i] != '\0')
   	  {
         lcd_DATWRTFIRST(string[i]);
