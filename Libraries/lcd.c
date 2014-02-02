@@ -13,11 +13,14 @@
 #define LCD_CTRL PORTK
 #define RS 0x01
 #define EN 0x02
+
+/*
 #define TAS 1                  // 1's here to reduce # MCFLG checks
 #define PWEH 1
 #define TH 1
-//#define TCHAR 2000
+#define TCHAR 2000
 #define DAT 26
+*/
 
 /*******************************************************/
 // PRE: Clock has been set to 24mHz
