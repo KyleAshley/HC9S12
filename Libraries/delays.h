@@ -9,7 +9,7 @@
 #define TAS 1                  // 1's here to reduce # MCFLG checks
 #define PWEH 1
 #define TH 1
-#define TCHAR 2000
+#define TCHAR 8000
 #define DAT 26
 
 #define FULL 600
