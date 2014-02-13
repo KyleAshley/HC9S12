@@ -92,8 +92,8 @@ void lcd_outputChar(unsigned char data)         // Outputs a character to curren
 void lcd_outputString(char* text)              // Outputs a character string starting at current cursor position
 {
     int i = 0;
-
-    while(text[i] != '\0')
+    delay_LCD_DATA(TCHAR);
+    while(text[i] != 0)
     {
         lcd_DATWRTFIRST(text[i]);
         delay_LCD_DATA(TCHAR);

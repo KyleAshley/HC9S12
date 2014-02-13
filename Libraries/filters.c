@@ -59,7 +59,7 @@ float butterworth_2pole_get_float(butterworth_2pole_t *it)
 
 long int butterworth_2pole_get_long(butterworth_2pole_t *it)
 {
-  return lround(butterworth_2pole_get_float(it));
+  return (long)(butterworth_2pole_get_float(it));
 }
 
 /*
@@ -103,5 +103,5 @@ float sliding_window_50_get_float(sliding_window_50_t *it)
 
 int sliding_window_50_get_int(sliding_window_50_t *it)
 {
-  return lround(sliding_window_50_get_float(it));
+  return (long)(sliding_window_50_get_float(it));
 }

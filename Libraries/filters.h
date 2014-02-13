@@ -5,6 +5,7 @@ typedef struct butterworth_2pole {
   unsigned char di_idx;
 } butterworth_2pole_t;
 
+
 /*
  * Initializes a Butterworth 2 pole filter
  * Parameters:
